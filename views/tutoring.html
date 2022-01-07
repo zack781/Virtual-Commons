@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<hmtl>
+	
+	<head>
+		<link rel="stylesheet" href="/public/style.css" />
+
+		<title>Tutoring request and accept</title>
+
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link 
+	rel="stylesheet" 
+	href="/public/bootstrap.css"/>
+
+	<link rel="stylesheet" href="/public/style.css" />
+
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+
+	</head>
+
+	<body>
+		<div id="nav-placeholder"></div>
+		<div id="chat-placeholder"></div>
+
+		<div id="main">
+			<h2 class="second-title">Tutoring</h2>
+			<form method="post" action="/tutoring_request">
+			<h2>Name <input type="text" name="student_name"></h2>
+			<h2>Grade <input type="text" name="student_grade"></h2>
+			<h2>Email <input type="text" name="email"></h2>
+			<h2>Course <input type="text" name="course"></h2>
+			<h2>Note <input type="text" name="note"></h2>
+
+			<button type = "submit" >Request tutor</button>
+			</form>
+
+		</br>
+		</br>
+
+			<div id="main1" class = "row justify-content-center"></div>
+
+		</div>
+
+	
+
+		<script>
+			$(function(){
+	        	$("#nav-placeholder").load("/views/nav.html");
+	      	});
+		</script>
+
+		<script type="text/javascript">
+
+			$.get("/return_tutoring", function(data){
+				console.log("Hello");
+				for (let i=0; i< data.length; i++){
+
+					var temp = '<div class="card" style="width: 20rem;" style = "background-color: rgba(0,0,0, 0.4);">												<div class="card-body">																												<h5 class="card-title" style="color:black;">{{name}}</h5> 																														<p class="card-text" style="color:black;"> {{student_name}} ({{grade}}th grade)</p>										<p style="color:black;">Contact {{email}}</p><p class="card-text" style="color:black;">Need Help With {{subject}}                                 </p> <p style="color:black;" class="card-text">{{note}}</p>																	</div> 																														</div>';
+					$('#main1').append( Mustache.render(temp,data[i]));
+
+
+				}
+			});
+
+			$("#submit_tutoring").click(function(){
+
+				console.log("HEY");
+
+				var tutor_request_data = {
+					student_name: $("#student_name").val(),
+					student_grade: $("#student_grade").val(),
+					email: $("#email_tutoring").val(),
+					course: $("#course").val()
+				}
+
+				console.log(tutor_request_data);
+
+				//$.post("/tutoring_request", tutor_request_data);
+
+				return false;
+
+			})
+
+			$(function(){$("#nav-placeholder").load("/views/nav.html");});
+			$(function(){$("#chat-placeholder").load("/views/chat.html");});
+
+		</script>
+
+	</body>
+
+</hmtl>

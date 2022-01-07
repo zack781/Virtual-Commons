@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/public/bootstrap.css"/>
+
+    <link rel="stylesheet" href="/public/style.css"/>
+  </head>
+
+
+	<body>
+
+    <div id="nav-placeholder"></div>
+    <div id="chat-placeholder"></div>
+
+    
+    <div id="main">
+
+      <div>
+        <h2 class="second-title"> New Lost Form </h2>
+      </div>
+
+      <form class="lost-form-container" method="post" action="/get_lost_data">
+
+        <input type="text" class="question" name="description" required autocomplete="off" />
+        <label for="description"><span>Description of Item</span></label>
+
+        <input name="location" rows="2" class="question" required autocomplete="off"></textarea>
+        <label for="location"><span>Where you might've lost it?</span></label>
+        
+
+        <h2 class="form-btn-group">Category
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label value="Electronic Devices" class="btn btn-outline-light" for="btnradio1">Electronic Devices</label>
+
+            <input value="Books" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+              <label class="btn btn-outline-light" for="btnradio2">Books</label>
+
+            <input value="Clothing" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-light" for="btnradio3">Clothing</label>
+
+            <input value="Other" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+            <label class="btn btn-outline-light" for="btnradio4">Other</label>
+          </div>
+        </h2>
+
+
+        <input name="name" rows="2" class="question" required autocomplete="off"></textarea>
+        <label for="msg"><span>Name</span></label>
+
+          
+        <h2 class="form-btn-group">Your grade level
+          <div class="form-check form-check-inline">
+            <input value="9" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" >
+            <label class="form-check-label" for="inlineRadio">9</label>
+          </div>
+              
+          <div class="form-check form-check-inline">
+            <input value="10" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" >
+            <label class="form-check-label" for="inlineRadio">10</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input value="11" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" >
+            <label class="form-check-label" for="inlineRadio">11</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input value="12" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" >
+            <label class="form-check-label" for="inlineRadio">12</label>
+          </div>
+        </h2>
+
+        <input name="email" rows="2" class="question" required autocomplete="off"></textarea>
+        <label for="msg"><span>Email</span></label>
+
+
+        <div class="input-group mb-3" width="auto" background="transparent">
+          <input type="file" class="form-control" id="inputGroupFile02" name="img">
+          <label class="input-group-text" for="inputGroupFile02">Upload A Picture</label>
+        </div>
+
+
+        <div class="container">
+          <form method='get' action='/lost_found'>
+            <button class="btn btn-light">Back</button>
+          </form>
+            
+    			<button type="submit" class="btn btn-light">Submit</button>
+
+        </div> 
+
+    	</form>
+
+    </div>
+
+		<script type="text/javascript">
+
+			$("#submit_lost_found").click(function(){
+
+				console.log("HEY");
+
+				var lost_item_data = {
+					item_name: $("#item_name").val(),
+					your_name: $("#your_name").val(),
+					email: $("#email").val(),
+					description: $("#description").val()
+
+				}
+
+				//$.post("/get_lost_data", lost_item_data);
+
+				return false;
+
+			})
+
+      $(function(){$("#nav-placeholder").load("/views/nav.html");});
+      $(function(){$("#chat-placeholder").load("/views/chat.html");});
+
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,307 @@
+    <div class="chat" id="myChatButton" onclick="toggleChat()">
+      <div class="background" onclick="toggleChat()"></div>
+      <svg class="chat-bubble" width="100" height="100" viewBox="0 0 100 100">
+        <g class="bubble">
+          <path class="line line1" d="M 30.7873,85.113394 30.7873,46.556405 C 30.7873,41.101961
+          36.826342,35.342 40.898074,35.342 H 59.113981 C 63.73287,35.342
+          69.29995,40.103201 69.29995,46.784744" />
+          <path class="line line2" d="M 13.461999,65.039335 H 58.028684 C
+            63.483128,65.039335
+            69.243089,59.000293 69.243089,54.928561 V 45.605853 C
+            69.243089,40.986964 65.02087,35.419884 58.339327,35.419884" />
+        </g>
+        <circle class="circle circle1" r="1.9" cy="50.7" cx="42.5" />
+        <circle class="circle circle2" cx="49.9" cy="50.7" r="1.9" />
+        <circle class="circle circle3" r="1.9" cy="50.7" cx="57.3" />
+      </svg>
+    </div>
+    <div id="mySideChat" class="sideChat" z-index="4">
+    	<div id="main-chat">
+        <div id="current-channel">
+          <h2 ALL SCHOOL></h2>
+        </div>
+			   <ul id="messages"></ul>
+    		<form id="form" action="">
+      			<input id="input" autocomplete="off" /><button>SEND</button>
+    		</form>
+		  </div>
+    	<div class="dropdown">
+    		<ul class="dropdown-content">
+    			<li><button type="button">All School</button></li>
+			    <li><button type="button">Freshman</button></li>
+			    <li><button type="button">Sophomore</button></li>
+			    <li><button type="button">Junior</button></li>
+			    <li><button type="button">Senior</button></li>
+			 </ul>
+			 <button class="dropbtn" type="button" id="">Select Channel</button>
+		</div>
+    </div>
+
+
+<style>
+
+  #current-channel{
+    color:white;
+    background: coral;
+    position: relative;
+    height: 50px;
+    margin:0;
+    padding:0;
+  }
+
+#form { 
+	background: transparent; 
+	padding: 0.25rem; 
+	position: absolute; 
+	bottom: 100px; 
+	left: 0; 
+	right: 0;
+	display: inline-flex; 
+	height: 5rem; 
+	box-sizing: border-box;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#input { 
+	border: none; 
+	padding: 0 1rem; 
+	flex-grow: 1; 
+	border-radius: 20px; 
+	margin: 0.25rem;
+	color: white;
+	font-size: 30px;
+	background: #c2c2c2;
+}
+
+#input:focus { 
+	outline: none;
+	background: #949494;
+	box-shadow: inset 0px 8px 16px 0px rgba(0,0,0,0.1);
+}
+
+#form > button { 
+	background: #525252; 
+	border: none; 
+	padding: 0 1rem; 
+	margin: 0.25rem; 
+	border-radius: 20px;
+	outline: none; 
+	color: white;
+	font-size: 20px;
+	box-shadow: inset 0px 8px 16px 0px rgba(0,0,0,0.5);
+  position: relative;
+    margin-right: 10px;
+}
+
+#messages { 
+	list-style-type: none; 
+	margin: 0; 
+  padding:0px;
+	padding-bottom: 40px;
+  height: auto;
+  color: black;
+  margin-top: 40px;
+  font-size:30px;
+}
+
+#messages > li { 
+	padding: 0.5rem 1rem; 
+}
+
+#messages > li:nth-child(odd) { 
+	background: #d1d1d1; 
+}
+
+.dropdown {
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  width: calc(100% - 20px);
+  margin: 10px;
+  margin-bottom: 11px;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 23px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 50px;
+  position: relative;
+  outline: none;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: grey;
+  min-width: 160px;
+  box-shadow: inset 0px 8px 16px 0px rgba(0,0,0,0.3);
+  z-index: 1;
+  padding-left: 60px;
+  margin:20px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  font-weight: 2000;
+}
+
+.dropdown-content li {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  list-style-type: none;
+}
+
+.dropdown-content li button{
+	font-size: 25px;
+  color: white;
+  background: transparent;
+  border: none;
+  display: block;
+  outline: none;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.sideChat {
+	min-height: calc(100vh - 60px);
+	width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-radius: 50px;
+    margin: 30px;
+    box-shadow: 0 2.1px 1.3px rgba(0, 0, 0, 0.1),
+    0 5.9px 4.2px rgba(0, 0, 0, 0.08), 0 12.6px 9.5px rgba(0, 0, 0, 0.15),
+    0 25px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+#chat-placeholder {
+   height:0;
+ }
+
+body{
+  display: flex;
+  height: 100vh;
+}
+.chat {    
+  display: flex;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+}
+
+.background {
+  background-color: #793140;
+  border-radius: 50%;
+  box-shadow: 0 2.1px 1.3px rgba(0, 0, 0, 0.044),
+    0 5.9px 4.2px rgba(0, 0, 0, 0.054), 0 12.6px 9.5px rgba(0, 0, 0, 0.061),
+    0 25px 20px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.chat-bubble {
+  cursor: pointer;
+  position: relative;
+  right: 10px;
+  bottom: 10px;
+}
+.bubble {
+  transform-origin: 50%;
+  transition: transform 500ms cubic-bezier(0.17, 0.61, 0.54, 0.9);
+}
+.line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.75;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line1 {
+  stroke-dasharray: 60 90;
+  stroke-dashoffset: -20;
+}
+.line2 {
+  stroke-dasharray: 67 87;
+  stroke-dashoffset: -18;
+}
+.circle {
+  fill: #ffffff;
+  stroke: none;
+  transform-origin: 50%;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.active .bubble {
+  transform: translateX(24px) translateY(4px) rotate(45deg);
+}
+.active .line1 {
+  stroke-dashoffset: 21;
+}
+.active .line2 {
+  stroke-dashoffset: 30;
+}
+.active .circle {
+  transform: scale(0);
+}
+</style>
+
+ <script src="/socket.io/socket.io.js"></script>
+  <script>
+  	function toggleChat() {
+    	document.getElementById('myChatButton').classList.toggle('active');
+	    if (document.getElementById("mySideChat").style.width == "450px") {
+	        document.getElementById("mySideChat").style.width = "0px";
+	        //document.getElementById("main").style.marginRight = "0px";
+	        document.getElementById("main").style.filter = "blur(0px)";
+	    } else {
+	        document.getElementById("mySideChat").style.width = "450px";
+	        //document.getElementById("main").style.marginRight = "250px";
+	        closeNav();
+	        document.getElementById("main").style.filter = "blur(4px)";
+	    }
+	}
+
+  var socket = io();
+
+  var messages = document.getElementById('messages');
+  var form = document.getElementById('form');
+  var input = document.getElementById('input');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('chat message', input.value);
+      input.value = '';
+    }
+  });
+
+  socket.on('chat message', function(msg) {
+    var item = document.createElement('li');
+    item.textContent = msg;
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>
+
+

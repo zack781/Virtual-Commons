@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html>
+
+	<head>
+		 <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+		 </script>
+		 <link rel="stylesheet" href="/public/style.css" />
+	</head>
+
+	<body>
+
+		<div id="nav-placeholder"></div>
+		<div id="chat-placeholder"></div>
+
+		<div id="main">
+
+			<form method='get' action='/' margin-top:"500px">
+				<button >Home</button>
+			</form>
+			
+			<form method ="post" action = "/new_news"  >
+
+				<h2>Title <input type="text" name="newsTitle" placeholder="Title" color="black"> </h2>
+				<h2>Image <input type="text" name="image" color="black"> </h2>
+	      		<h2>Link to Google Doc <input type="text" name="writing" color="black"> </h2>
+
+				<button type="submit" class="btn primary-btn">Submit</button>
+
+			</form>
+
+		</div>
+
+		<script>
+			$(function(){$("#nav-placeholder").load("/views/nav.html");});
+			$(function(){$("#chat-placeholder").load("/views/chat.html");});
+		</script>
+		
+	</body>
+</html>
+
+
